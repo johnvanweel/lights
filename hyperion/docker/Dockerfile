@@ -7,8 +7,5 @@ COPY config/hyperion.config.json /etc/hyperion/hyperion.config.json
 
 RUN dos2unix /tmp/*.sh
 
-#VOLUME ["/dev/spidev0.1"]
-
 WORKDIR "/tmp"
 CMD ["sh", "/tmp/install.sh"]
-#CMD ["/storage/hyperion/bin/hyperion-remote.sh", "--priority", "50", "--color", "red", "--duration", "500000"]
