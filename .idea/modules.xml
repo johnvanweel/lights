@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hyperion/hyperion.iml" filepath="$PROJECT_DIR$/hyperion/hyperion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lights.iml" filepath="$PROJECT_DIR$/lights.iml" />
+    </modules>
+  </component>
+</project>
