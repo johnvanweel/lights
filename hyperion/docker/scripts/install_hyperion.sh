@@ -247,8 +247,7 @@ if [ $OS_OPENELEC -eq 1 ]; then
 	touch /storage/.config/autostart.sh 2>/dev/null
 	if [ `cat /storage/.config/autostart.sh 2>/dev/null | grep hyperiond | wc -l` -eq 0 ]; then
 		echo '---> Adding Hyperion to OpenELEC/LibreELEC autostart.sh'
-		echo "/storage/hyperion/bin/hyperiond.sh /storage/.config/hyperion.config.json > /storage/logfiles/hyperion.log 2>&1 &" >> /storage/.config/autostart.sh
-		chmod +x /storage/.config/autostart.sh
+y		chmod +x /storage/.config/autostart.sh
 	fi
 	# only add hyperion-x11 to startup, if not found and x32x64 detected
 	if [ $CPU_X32X64 -eq 1 ] && [ `cat /storage/.config/autostart.sh 2>/dev/null | grep hyperion-x11 | wc -l` -eq 0 ]; then

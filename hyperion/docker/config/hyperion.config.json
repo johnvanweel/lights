@@ -106,7 +106,7 @@
 	// BLACKBORDER CONFIG
 	"blackborderdetector" : 
 	{
-		"enable" : true,
+		"enable" : false,
 		"threshold" : 0.0,
 		"unknownFrameCnt" : 600,
 		"borderFrameCnt" : 50,
