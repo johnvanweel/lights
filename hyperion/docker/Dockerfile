@@ -8,4 +8,6 @@ COPY config/hyperion.config.json /etc/hyperion/hyperion.config.json
 RUN dos2unix /tmp/*.sh
 
 WORKDIR "/tmp"
+
+#TODO: No runtime installer
 CMD ["sh", "/tmp/install.sh"]
