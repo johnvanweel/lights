@@ -21,7 +21,7 @@ public class LightService {
     }
 
     public void changeIntensity(final double value) {
-        if (value <= 0 || value > 1) {
+        if (value < 0 || value > 1) {
             throw new IllegalArgumentException();
         }
 
