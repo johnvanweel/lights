@@ -7,11 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hyperion" />
+        <module name="light-service" />
+        <module name="xbee-receiver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hyperion" target="1.5" />
-      <module name="lights" target="1.5" />
+      <module name="hyperion" target="1.8" />
+      <module name="light-service" target="1.8" />
+      <module name="lights" target="1.8" />
+      <module name="xbee-receiver" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
