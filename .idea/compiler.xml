@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dimmer" target="1.8" />
       <module name="hyperion" target="1.8" />
       <module name="light-service" target="1.8" />
       <module name="lights" target="1.8" />

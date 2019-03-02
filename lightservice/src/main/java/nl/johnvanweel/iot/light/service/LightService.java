@@ -17,7 +17,7 @@ public class LightService {
 
     @PostConstruct
     public void setDefault(){
-        changeIntensity(1);
+//        changeIntensity(1);
     }
 
     public void changeIntensity(final double value) {

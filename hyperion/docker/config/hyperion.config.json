@@ -95,25 +95,6 @@
 
 	// NO V4L2 GRABBER CONFIG
 	// FRAME GRABBER CONFIG
-	"framegrabber" : 
-	{
-		"width" : 64,
-		"height" : 64,
-		"frequency_Hz" : 10.0,
-		"priority" : 890
-	},
-
-	// BLACKBORDER CONFIG
-	"blackborderdetector" : 
-	{
-		"enable" : false,
-		"threshold" : 0.0,
-		"unknownFrameCnt" : 600,
-		"borderFrameCnt" : 50,
-		"maxInconsistentCnt" : 10,
-		"blurRemoveCnt" : 1,
-		"mode" : "default"
-	},
 
 	// BOOTEFFECT CONFIG
 	"bootsequence" : 
