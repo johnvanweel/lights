@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hyperion/hyperion.iml" filepath="$PROJECT_DIR$/hyperion/hyperion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kodi-play-state/kodiplaystate.iml" filepath="$PROJECT_DIR$/kodi-play-state/kodiplaystate.iml" />
       <module fileurl="file://$PROJECT_DIR$/lightservice/light-service.iml" filepath="$PROJECT_DIR$/lightservice/light-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/lights.iml" filepath="$PROJECT_DIR$/lights.iml" />
       <module fileurl="file://$PROJECT_DIR$/xbeereceiver/xbee-receiver.iml" filepath="$PROJECT_DIR$/xbeereceiver/xbee-receiver.iml" />

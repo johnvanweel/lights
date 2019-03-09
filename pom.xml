@@ -18,6 +18,7 @@
         <module>hyperion</module>
         <module>xbeereceiver</module>
         <module>lightservice</module>
+        <module>kodi-play-state</module>
     </modules>
 
     <properties>

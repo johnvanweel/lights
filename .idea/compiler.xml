@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hyperion" />
+        <module name="kodiplaystate" />
         <module name="light-service" />
         <module name="xbee-receiver" />
       </profile>
@@ -14,6 +15,7 @@
     <bytecodeTargetLevel>
       <module name="dimmer" target="1.8" />
       <module name="hyperion" target="1.8" />
+      <module name="kodiplaystate" target="1.8" />
       <module name="light-service" target="1.8" />
       <module name="lights" target="1.8" />
       <module name="xbee-receiver" target="1.8" />
@@ -22,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="hyperion" options="-parameters" />
+      <module name="kodiplaystate" options="-parameters" />
       <module name="light-service" options="-parameters" />
       <module name="xbee-receiver" options="-parameters" />
     </option>

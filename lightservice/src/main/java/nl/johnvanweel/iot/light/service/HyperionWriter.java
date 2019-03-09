@@ -43,7 +43,7 @@ public class HyperionWriter {
         this.serverAddress = serverAddress;
     }
 
-    public void sendRequest(Message.HyperionRequest request) throws IOException {
+    public synchronized void sendRequest(Message.HyperionRequest request) throws IOException {
         if (!hasSocketConnection()) {
             log.warn("Cannot process request, no socket connection present");
             return;

@@ -13,24 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("intensity")
-@Api(value = "/intensity", description = "Controls light intensity")
-public class LightIntensityController {
-    private final Logger log = LoggerFactory.getLogger(LightIntensityController.class);
+@RequestMapping("dim")
+@Api(value = "/dim", description = "Dims lights")
+public class LightDimController {
+    private final Logger log = LoggerFactory.getLogger(LightDimController.class);
     private final LightService lightService;
 
     @Autowired
-    public LightIntensityController(final LightService lightService) {
+    public LightDimController(final LightService lightService) {
         this.lightService = lightService;
     }
 
     @PostMapping("/{value}")
-    @ApiOperation("setLights")
+    @ApiOperation("dimLights")
     @ApiResponse(code = 200, message = "Lights changed")
-    public void setLights(@PathVariable final double value) {
-        log.info("Received new value: {}", value);
-        lightService.changeIntensity(value);
+    public void dimLights(@PathVariable final double value) {
+        log.info("Dimming lights to {}", value);
+        lightService.dimLights(value);
     }
-
-
 }

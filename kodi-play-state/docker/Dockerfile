@@ -26,10 +26,7 @@ RUN set -x && \
     rm -rf /var/lib/apt/lists/* && \
     [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
-RUN apt-get update && apt-get install -y librxtx-java
+COPY kodi-play-service.jar /tmp/
 
-WORKDIR "/tmp"
-
-COPY xbee.jar /tmp/
-
-ENTRYPOINT ["java","-jar", "-Djava.library.path=/usr/lib/jni", "/tmp/xbee.jar"]
+ENV JAVA_OPTS=""
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /tmp/kodi-play-service.jar
