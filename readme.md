@@ -12,3 +12,7 @@
 
 - Login to RPI
 - Add dtparam=spi=on to /boot/config.txt
+
+
+*TODO*
+- XBee loses USB access after reboot
