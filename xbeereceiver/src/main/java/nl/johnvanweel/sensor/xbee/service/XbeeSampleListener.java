@@ -29,8 +29,6 @@ public class XbeeSampleListener implements IIOSampleReceiveListener {
 	public void ioSampleReceived(RemoteXBeeDevice remoteXBeeDevice, IOSample ioSample) {
         long analogValue = ioSample.getAnalogValue(IOLine.DIO1_AD1);
 		double percentage = (analogValue) / (double) (1023);
-        System.out.println(percentage*100 + "%");
-
         double inverse = ((double)1)-percentage;
         log.info("Sending new value {}", inverse);
         senderService.sendMessage(inverse);

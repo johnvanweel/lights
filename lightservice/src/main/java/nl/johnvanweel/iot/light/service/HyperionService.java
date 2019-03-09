@@ -1,7 +1,10 @@
 package nl.johnvanweel.iot.light.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import proto.Message;
 
@@ -13,11 +16,27 @@ import java.net.Socket;
 
 @Service
 public class HyperionService {
-    private final Socket mSocket;
+    public static final int PORT = 19445;
+    private final Logger log = LoggerFactory.getLogger(HyperionService.class);
+    private final String serverAddress;
+
+    private Socket hyperionSocket;
 
     @Autowired
-    public HyperionService(@Value("${server}") final String server) throws IOException {
-        mSocket = new Socket(server, 19445);
+    public HyperionService(@Value("${server}") final String serverAddress) {
+        this.serverAddress = serverAddress;
+    }
+
+    @Scheduled(fixedRate = 5000L)
+    public void reconnect() {
+        if (hyperionSocket == null || !hyperionSocket.isConnected()) {
+            try {
+                log.info("Attempting to connect ot {}:{}", serverAddress, PORT);
+                hyperionSocket = new Socket(serverAddress, PORT);
+            } catch (IOException e) {
+                log.error("Cannot connect to hyperion service.", e);
+            }
+        }
     }
 
     public void setColor(final Color color) {
@@ -56,7 +75,6 @@ public class HyperionService {
     private void sendRequest(Message.HyperionRequest request) throws IOException {
         int size = request.getSerializedSize();
 
-        // create the header
         byte[] header = new byte[4];
         header[0] = (byte) ((size >> 24) & 0xFF);
         header[1] = (byte) ((size >> 16) & 0xFF);
@@ -64,7 +82,7 @@ public class HyperionService {
         header[3] = (byte) ((size) & 0xFF);
 
         // write the data to the socket
-        OutputStream output = mSocket.getOutputStream();
+        OutputStream output = hyperionSocket.getOutputStream();
         output.write(header);
         request.writeTo(output);
         output.flush();
@@ -76,7 +94,7 @@ public class HyperionService {
     }
 
     private Message.HyperionReply receiveReply() throws IOException {
-        InputStream input = mSocket.getInputStream();
+        InputStream input = hyperionSocket.getInputStream();
 
         byte[] header = new byte[4];
         input.read(header, 0, 4);
