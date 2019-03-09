@@ -1,8 +1,10 @@
 package nl.johnvanweel.iot.lights.kodi.service;
 
 import com.github.arteam.simplejsonrpc.client.JsonRpcClient;
+import com.github.arteam.simplejsonrpc.client.builder.RequestBuilder;
 import nl.johnvanweel.iot.lights.kodi.service.model.Player;
 import nl.johnvanweel.iot.lights.kodi.service.model.PlayerInfo;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,14 +21,19 @@ public class KodiConnector {
     }
 
     public List<Player> retrievePlayers() {
-        return Arrays.asList(client.createRequest().method("Player.GetActivePlayers").id(1L).returnAsArray(Player.class).execute());
+        return Arrays.asList(createRequest("Player.GetActivePlayers").returnAsArray(Player.class).execute());
     }
 
     public PlayerInfo getPlayInfo(final Player player) {
-        return client.createRequest().method("Player.GetProperties").id(1L)
+        return createRequest("Player.GetProperties")
                 .param("playerid", player.getPlayerid())
                 .param("properties", new String[]{"speed"})
                 .returnAs(PlayerInfo.class)
                 .execute();
+    }
+
+    @NotNull
+    private RequestBuilder<Object> createRequest(String method) {
+        return client.createRequest().method(method).id(1L);
     }
 }

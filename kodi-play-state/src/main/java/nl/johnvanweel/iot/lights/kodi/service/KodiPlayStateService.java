@@ -25,7 +25,7 @@ public class KodiPlayStateService {
     }
 
     @Scheduled(fixedRate = 1000L)
-    public void checkPlayState() {
+    public void dimLightsOnVideoPlay() {
         try {
             double dimValue = connector.retrievePlayers().stream()
                     .filter(videoPlayers())
