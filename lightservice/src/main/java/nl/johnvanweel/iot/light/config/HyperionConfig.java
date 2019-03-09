@@ -6,7 +6,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @ComponentScan("nl.johnvanweel.iot")
-@EnableScheduling
 public class HyperionConfig {
 
 
