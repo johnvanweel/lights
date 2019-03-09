@@ -17,12 +17,12 @@ public class LightService {
 
     @PostConstruct
     public void setDefault(){
-//        changeIntensity(1);
+        changeIntensity(1);
     }
 
     public void changeIntensity(final double value) {
         if (value < 0 || value > 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Intensity value must be between 0 and 1");
         }
 
         final int rgbValue = (int) (255 * value);
