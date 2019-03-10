@@ -15,4 +15,3 @@
 
 
 *TODO*
-- XBee loses USB access after reboot

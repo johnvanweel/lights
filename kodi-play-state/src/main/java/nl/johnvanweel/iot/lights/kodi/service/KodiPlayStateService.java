@@ -18,6 +18,8 @@ public class KodiPlayStateService {
     private final KodiConnector connector;
     private final LightDimControllerApi api;
 
+    private double previousState = 0.0D;
+
     @Autowired
     public KodiPlayStateService(final KodiConnector connector, final LightDimControllerApi api) {
         this.connector = connector;
@@ -34,9 +36,12 @@ public class KodiPlayStateService {
                     .findFirst()
                     .orElse(1.0D);
 
-            log.info("Dimming lights to {}", dimValue);
+            if (dimValue != previousState) {
+                previousState = dimValue;
 
-            api.dimLightsUsingPOST(dimValue);
+                log.info("Dimming lights to {}", dimValue);
+                api.dimLightsUsingPOST(dimValue);
+            }
         } catch (Throwable t) {
             t.printStackTrace();
         }

@@ -28,8 +28,9 @@ RUN set -x && \
 
 RUN apt-get update && apt-get install -y librxtx-java
 
-WORKDIR "/tmp"
-
 COPY xbee.jar /tmp/
+COPY startup.sh /tmp/
 
-ENTRYPOINT ["java","-jar", "-Djava.library.path=/usr/lib/jni", "/tmp/xbee.jar"]
+RUN chmod 777 /tmp/startup.sh && ln -s /tmp/startup.sh /
+
+ENTRYPOINT rm /var/lock/* || true && java -jar -Djava.library.path=/usr/lib/jni /tmp/xbee.jar
